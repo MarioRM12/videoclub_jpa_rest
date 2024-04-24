@@ -5,6 +5,7 @@ import org.iesvdm.videoclub.domain.Categoria;
 import org.iesvdm.videoclub.domain.Pelicula;
 import org.iesvdm.videoclub.service.CategoriaService;
 import org.iesvdm.videoclub.service.PeliculaService;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,14 @@ public class CategoriaController {
     }
 
     @GetMapping({"","/"})
-    public List<Categoria> all() {
+    public List<Categoria> all(
+            @RequestParam(required = false) String buscar,
+            @RequestParam(required = false) String ordenar,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
         log.info("Accediendo a todas las categorias");
-        return this.categoriaService.all();
+        return this.categoriaService.all(buscar, ordenar, PageRequest.of(page, size));
     }
 
     @PostMapping({"","/"})

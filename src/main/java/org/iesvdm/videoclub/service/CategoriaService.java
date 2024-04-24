@@ -3,9 +3,11 @@ package org.iesvdm.videoclub.service;
 import org.iesvdm.videoclub.domain.Categoria;
 import org.iesvdm.videoclub.domain.Pelicula;
 import org.iesvdm.videoclub.exception.PeliculaNotFoundException;
+import org.iesvdm.videoclub.repository.CategoriaCustomRespositoryJPQLImpl;
 import org.iesvdm.videoclub.repository.CategoriaRepository;
 import org.iesvdm.videoclub.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,14 +16,27 @@ import java.util.Optional;
 @Service
 public class CategoriaService {
 
+    @Autowired
     private final CategoriaRepository categoriaRepository;
 
-    public CategoriaService(CategoriaRepository categoriaRepository) {
+    @Autowired
+    private final CategoriaCustomRespositoryJPQLImpl categoriaCustomRespositoryJPQLImpl;
+
+    public CategoriaService(CategoriaRepository categoriaRepository, CategoriaCustomRespositoryJPQLImpl categoriaCustomRespositoryJPQLImpl) {
         this.categoriaRepository = categoriaRepository;
+        this.categoriaCustomRespositoryJPQLImpl = categoriaCustomRespositoryJPQLImpl;
     }
 
     public List<Categoria> all() {
         return this.categoriaRepository.findAll();
+    }
+
+    public List<Categoria> all(String buscar, String ordenar, Pageable pageable) {
+        return categoriaCustomRespositoryJPQLImpl.queryCustomCategoria(
+                Optional.ofNullable(buscar),
+                Optional.ofNullable(ordenar),
+                pageable
+        );
     }
 
     public Categoria save(Categoria categoria) {
