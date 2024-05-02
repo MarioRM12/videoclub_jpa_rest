@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -54,6 +55,18 @@ public class CategoriaController {
     @DeleteMapping("/{id}")
     public void deleteCategoria(@PathVariable("id") Long id) {
         this.categoriaService.delete(id);
+    }
+
+    @GetMapping("/contar-peliculas")
+    public Map<String, Long> countMoviesByCategory() {
+        log.info("Contando películas por categoría");
+        return this.categoriaService.countMoviesByCategory();
+    }
+
+    @GetMapping("/contar-peliculas/{id}")
+    public Map<String, Long> countMoviesByCategoryid(@PathVariable("id") Long id) {
+        log.info("Contando películas por id de categoría");
+        return this.categoriaService.countMoviesByCategoryid(id);
     }
 
 

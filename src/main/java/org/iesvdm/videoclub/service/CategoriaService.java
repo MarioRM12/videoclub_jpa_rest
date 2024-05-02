@@ -10,20 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class CategoriaService {
 
-    @Autowired
+
     private final CategoriaRepository categoriaRepository;
 
-    @Autowired
+
+    private final PeliculaRepository peliculaRepository;
+
+
     private final CategoriaCustomRespositoryJPQLImpl categoriaCustomRespositoryJPQLImpl;
 
-    public CategoriaService(CategoriaRepository categoriaRepository, CategoriaCustomRespositoryJPQLImpl categoriaCustomRespositoryJPQLImpl) {
+    public CategoriaService(CategoriaRepository categoriaRepository, PeliculaRepository peliculaRepository, CategoriaCustomRespositoryJPQLImpl categoriaCustomRespositoryJPQLImpl) {
         this.categoriaRepository = categoriaRepository;
+        this.peliculaRepository = peliculaRepository;
         this.categoriaCustomRespositoryJPQLImpl = categoriaCustomRespositoryJPQLImpl;
     }
 
@@ -60,6 +66,30 @@ public class CategoriaService {
         this.categoriaRepository.findById(id).map(p -> {this.categoriaRepository.delete(p);
                     return p;})
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
+    }
+
+    public Map<String, Long> countMoviesByCategory() {
+        List<Categoria> categorias = categoriaRepository.findAll();
+        Map<String, Long> moviesCountByCategory = new HashMap<>();
+
+        for (Categoria categoria : categorias) {
+            Long movieCount = peliculaRepository.countByCategorias(categoria);
+            moviesCountByCategory.put(categoria.getNombre(), movieCount);
+        }
+
+        return moviesCountByCategory;
+    }
+
+    public Map<String, Long> countMoviesByCategoryid(Long id) {
+        List<Categoria> categorias = categoriaRepository.findAll();
+        Map<String, Long> moviesCountByCategory = new HashMap<>();
+
+        for (Categoria categoria : categorias) {
+            Long movieCount = peliculaRepository.countByCategorias_id(id);
+            moviesCountByCategory.put(categoria.getNombre(), movieCount);
+        }
+
+        return moviesCountByCategory;
     }
 
 }
