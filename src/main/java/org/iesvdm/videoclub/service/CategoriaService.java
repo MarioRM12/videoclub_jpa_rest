@@ -1,15 +1,15 @@
 package org.iesvdm.videoclub.service;
 
 import org.iesvdm.videoclub.domain.Categoria;
-import org.iesvdm.videoclub.domain.Pelicula;
 import org.iesvdm.videoclub.exception.PeliculaNotFoundException;
 import org.iesvdm.videoclub.repository.CategoriaCustomRespositoryJPQLImpl;
 import org.iesvdm.videoclub.repository.CategoriaRepository;
 import org.iesvdm.videoclub.repository.PeliculaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,3 +93,36 @@ public class CategoriaService {
     }
 
 }
+
+
+//      OTRA FORMA DE BUSCAR Y ORDENAR
+//
+//    public List<Categoria> allByQueryFiltersStream(Optional<String> buscar, Optional<String> ordenar){
+//        List<Categoria> resultado = null;
+//        if(buscar.isPresent()){
+//            resultado = categoriaRepository.findByNombreContainingIgnoreCase(buscar.get());
+//        }
+//        if(ordenar.isPresent()){
+//            if(buscar.isPresent() && "asc".equalsIgnoreCase(ordenar.get())){
+//                resultado = categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreAsc(buscar.get());
+//            } else if (buscar.isPresent() && "desc".equalsIgnoreCase(ordenar.get())) {
+//                resultado = categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreDesc(buscar.get());
+//            }
+//        }
+//        return resultado;
+//
+//    }
+//
+//    public Map<String, Object> all(int pagina, int tamano){
+//        Pageable paginado = PageRequest.of(pagina, tamano, Sort.by("id").ascending());
+//        Page<Categoria> pageAll = this.categoriaRepository.findAll(paginado);
+//
+//        Map<String,Object> response = new HashMap<>();
+//
+//        response.put("categorias", pageAll.getContent());
+//        response.put("currentPage", pageAll.getNumber());
+//        response.put("totalItems", pageAll.getTotalElements());
+//        response.put("totalPages", pageAll.getTotalPages());
+//        return response;
+//
+//    }

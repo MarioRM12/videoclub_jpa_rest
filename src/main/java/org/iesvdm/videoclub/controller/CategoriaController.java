@@ -7,10 +7,11 @@ import org.iesvdm.videoclub.service.CategoriaService;
 import org.iesvdm.videoclub.service.PeliculaService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -49,7 +50,6 @@ public class CategoriaController {
         return this.categoriaService.replace(id, categoria);
     }
 
-
     @ResponseBody
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
@@ -69,5 +69,30 @@ public class CategoriaController {
         return this.categoriaService.countMoviesByCategoryid(id);
     }
 
-
 }
+
+
+
+//OTRA FORMA DE HACER LAS BUSQUEDAS
+
+//    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!pagina", "!tamano"})
+//    public List<Categoria> all() {
+//        log.info("Accediendo a todas las categorías");
+//        return this.categoriaService.all();
+//    }
+//    @GetMapping(value = {"", "/"})
+//    public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+//                                                   @RequestParam(value="tamano", defaultValue = "3") int tamano){
+//        log.info("Accediendo a todas las categorías con paginación");
+//        Map<String, Object> responseAll = this.categoriaService.all(pagina, tamano);
+//        return ResponseEntity.ok(responseAll);
+//    }
+//    @GetMapping(value = {"","/"},  params={"!buscar", "!ordenar"})
+//    public List<Categoria> all(@RequestParam("buscar") Optional<String> buscarOptional,
+//                               @RequestParam("ordenar") Optional<String> ordenarOptional
+//    ) {
+//        log.info("Accediendo a todas las categorías con filtro buscar: %s y ordenar: %s" +
+//                buscarOptional.orElse("VOID"), ordenarOptional.orElse("VOID")
+//        );
+//        return this.categoriaService.allByQueryFiltersStream(buscarOptional, ordenarOptional);
+//    }

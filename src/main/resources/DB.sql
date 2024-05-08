@@ -26,6 +26,32 @@ values  (1, 'English', '2006-02-15 05:02:19'),
         (5, 'French', '2006-02-15 05:02:19'),
         (6, 'German', '2006-02-15 05:02:19');
 
+INSERT INTO pelicula (id_pelicula, anyo_lanzamiento, clasificacion, descripcion, duracion, duracion_alquiler, rental_rate, replacement_cost, titulo, ultima_actualizacion, id_idioma, id_idioma_original)
+VALUES
+    (1, '2006-01-01', '0', 'An Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies', 86, 1, 0.99, 20.99, 'ACADEMY DINOSAUR', '2006-02-15 04:34:33', 1, 6),
+    (2, '2006-01-01', '1', 'An Astounding Epistle of a Database Administrator And an Explorer who must Find a Car in Ancient China', 48, 1, 4.99, 12.99, 'ACE GOLDFINGER', '2006-02-15 05:03:42', 1, 3),
+    (3, '2006-01-01', '3', 'An Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Balloon Factory', 50, 1, 2.99, 18.99, 'ADAPTATION HOLES', '2006-02-15 05:03:42', 1, 5),
+    (4, '2006-01-01', '0', 'A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank', 117, 1, 2.99, 26.99, 'AFFAIR PREJUDICE', '2006-02-15 05:03:42', 1, 5),
+    (5, '2006-01-01', '0', 'A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico', 130, 1, 2.99, 22.99, 'AFRICAN EGG', '2006-02-15 05:03:42', 1, 6),
+    (6, '2006-01-01', '0', 'An Intrepid Panorama of a Robot And a Boy who must Escape a Sumo Wrestler in Ancient China', 169, 1, 2.99, 17.99, 'AIRPLANE SIERRA', '2006-02-15 05:03:42', 1, 3),
+    (7, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT TRUMAN', '2006-02-15 05:03:42', 1, 6),
+    (8, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT ALPHA', '2006-02-15 05:03:42', 1, 6),
+    (9, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT BETA', '2006-02-15 05:03:42', 1, 6),
+    (11,'2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT GAMMA', '2006-02-15 05:03:42', 1, 6);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 insert into actor (id_actor, apellidos, nombre, ultima_actualizacion)
@@ -229,18 +255,3 @@ values  (1, 'PENELOPE', 'GUINESS', '2006-02-15 04:34:33'),
         (198, 'MARY', 'KEITEL', '2006-02-15 04:34:33'),
         (199, 'JULIA', 'FAWCETT', '2006-02-15 04:34:33'),
         (200, 'THORA', 'TEMPLE', '2006-02-15 04:34:33');
-
-
-
-INSERT INTO pelicula (id_pelicula, anyo_lanzamiento, clasificacion, descripcion, duracion, duracion_alquiler, rental_rate, replacement_cost, titulo, ultima_actualizacion, id_idioma, id_idioma_original)
-VALUES
-    (1, '2006-01-01', '0', 'An Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies', 86, 1, 0.99, 20.99, 'ACADEMY DINOSAUR', '2006-02-15 04:34:33', 1, 6),
-    (2, '2006-01-01', '1', 'An Astounding Epistle of a Database Administrator And an Explorer who must Find a Car in Ancient China', 48, 1, 4.99, 12.99, 'ACE GOLDFINGER', '2006-02-15 05:03:42', 1, 3),
-    (3, '2006-01-01', '3', 'An Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Balloon Factory', 50, 1, 2.99, 18.99, 'ADAPTATION HOLES', '2006-02-15 05:03:42', 1, 5),
-    (4, '2006-01-01', '0', 'A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank', 117, 1, 2.99, 26.99, 'AFFAIR PREJUDICE', '2006-02-15 05:03:42', 1, 5),
-    (5, '2006-01-01', '0', 'A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico', 130, 1, 2.99, 22.99, 'AFRICAN EGG', '2006-02-15 05:03:42', 1, 6),
-    (6, '2006-01-01', '0', 'An Intrepid Panorama of a Robot And a Boy who must Escape a Sumo Wrestler in Ancient China', 169, 1, 2.99, 17.99, 'AIRPLANE SIERRA', '2006-02-15 05:03:42', 1, 3),
-    (7, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT TRUMAN', '2006-02-15 05:03:42', 1, 6),
-    (8, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT ALPHA', '2006-02-15 05:03:42', 1, 6),
-    (9, '2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT BETA', '2006-02-15 05:03:42', 1, 6),
-    (11,'2006-01-01', '2', 'A Touching Saga of a Hunter And a Butler who must Discover a Treasure in A Jet Boat', 62, 1, 4.99, 28.99, 'AGENT GAMMA', '2006-02-15 05:03:42', 1, 6);
